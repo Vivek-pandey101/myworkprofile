@@ -61,7 +61,7 @@ export default function Achievements() {
             variants={fadeUp}
             whileHover={{ y: -6 }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            className="relative overflow-hidden rounded-2xl border border-border bg-surface/50 p-6 text-center backdrop-blur"
+            className="relative overflow-hidden rounded-2xl border border-border bg-surface/60 p-6 text-center"
           >
             <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-primary/10 to-transparent" />
             <p className="font-display text-4xl font-extrabold text-gradient-brand sm:text-5xl">
@@ -84,7 +84,7 @@ export default function Achievements() {
           <motion.div
             key={item}
             variants={fadeUp}
-            className="group flex items-start gap-3 rounded-2xl border border-border bg-surface/40 p-5 backdrop-blur transition-colors hover:border-border-strong"
+            className="group flex items-start gap-3 rounded-2xl border border-border bg-surface/50 p-5 transition-colors hover:border-border-strong"
           >
             <span className="mt-0.5 text-xl text-secondary transition-transform group-hover:scale-110">
               <HiCheckBadge />

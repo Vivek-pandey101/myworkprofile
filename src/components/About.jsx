@@ -27,7 +27,7 @@ export default function About() {
             variants={scaleIn}
             whileHover={{ y: -6 }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            className="group relative overflow-hidden rounded-2xl border border-border bg-surface/50 p-6 backdrop-blur transition-colors hover:border-border-strong"
+            className="group relative overflow-hidden rounded-2xl border border-border bg-surface/60 p-6 transition-colors hover:border-border-strong"
           >
             <div className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-primary/10 blur-2xl transition-opacity duration-500 group-hover:opacity-100 opacity-0" />
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 text-2xl text-secondary ring-1 ring-inset ring-white/5">
@@ -54,7 +54,7 @@ export default function About() {
           { k: 'CRM · SaaS', v: 'Business Applications' },
           { k: 'Cloud-native', v: 'Deployment & Scaling' },
         ].map((item) => (
-          <div key={item.v} className="bg-surface/70 px-6 py-6 text-center backdrop-blur">
+          <div key={item.v} className="bg-surface/80 px-6 py-6 text-center">
             <p className="font-display text-xl font-bold text-gradient-brand">
               {item.k}
             </p>

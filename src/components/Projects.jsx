@@ -17,7 +17,7 @@ function ProjectVisual({ project }) {
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
       {/* Mock browser window */}
-      <div className="absolute inset-x-5 bottom-0 top-8 overflow-hidden rounded-t-xl border border-white/15 bg-background/70 backdrop-blur-md">
+      <div className="absolute inset-x-5 bottom-0 top-8 overflow-hidden rounded-t-xl border border-white/15 bg-background/85">
         <div className="flex items-center gap-1.5 border-b border-white/10 px-3 py-2.5">
           <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
           <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/80" />
@@ -67,7 +67,7 @@ export default function Projects() {
           <motion.article
             key={project.name}
             variants={fadeUp}
-            className="group relative grid overflow-hidden rounded-3xl border border-border bg-surface/50 backdrop-blur transition-colors hover:border-border-strong lg:grid-cols-2"
+            className="group relative grid overflow-hidden rounded-3xl border border-border bg-surface/60 transition-colors hover:border-border-strong lg:grid-cols-2"
           >
             {/* Visual */}
             <div

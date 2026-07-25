@@ -192,7 +192,7 @@ export default function Contact() {
               target={href.startsWith('mailto') ? undefined : '_blank'}
               rel="noopener noreferrer"
               whileHover={{ x: 4 }}
-              className="group flex items-center gap-4 rounded-2xl border border-border bg-surface/50 p-4 backdrop-blur transition-colors hover:border-border-strong"
+              className="group flex items-center gap-4 rounded-2xl border border-border bg-surface/60 p-4 transition-colors hover:border-border-strong"
             >
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 text-xl text-secondary ring-1 ring-inset ring-white/5">
                 <Icon />

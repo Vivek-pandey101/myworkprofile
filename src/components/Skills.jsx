@@ -1,22 +1,20 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { HiOutlineBookOpen } from 'react-icons/hi2'
+import { HiOutlineArrowRight } from 'react-icons/hi2'
 import Section, { SectionHeading } from './ui/Section'
 import { skillCategories } from '../data/content'
-import { skillGuides } from '../data/skillGuides'
+import { hasGuide, slugify } from '../data/skillGuideMeta'
 import { fadeUp, stagger, viewportOnce } from './ui/motion'
-import SkillGuideModal from './SkillGuideModal'
+
+const referenceBase = `${import.meta.env.BASE_URL}reference.html`
 
 export default function Skills() {
-  const [activeGuide, setActiveGuide] = useState(null)
-
   return (
     <Section id="skills">
       <div className="flex flex-col items-center">
         <SectionHeading
           eyebrow="Tech Stack"
           title="Tools I use to build & ship"
-          description="A modern full stack toolkit spanning frontend, backend, databases, and cloud infrastructure. Tap a badge with a book icon for a full command reference."
+          description="A modern full stack toolkit spanning frontend, backend, databases, and cloud infrastructure. Tap a badge with an arrow to open its command reference."
         />
       </div>
 
@@ -31,7 +29,7 @@ export default function Skills() {
           <motion.div
             key={category.title}
             variants={fadeUp}
-            className="group relative overflow-hidden rounded-2xl border border-border bg-surface/50 p-6 backdrop-blur transition-colors hover:border-border-strong sm:p-7"
+            className="group relative overflow-hidden rounded-2xl border border-border bg-surface/50 p-6 transition-colors hover:border-border-strong sm:p-7"
           >
             {/* accent glow */}
             <div
@@ -54,30 +52,28 @@ export default function Skills() {
 
             <div className="flex flex-wrap gap-2.5">
               {category.skills.map(({ name, icon: Icon }) => {
-                const guide = skillGuides[name]
                 const commonClasses =
                   'inline-flex items-center gap-2 rounded-xl border border-border bg-background/60 px-3.5 py-2 text-sm font-medium text-text/90 transition-colors hover:border-border-strong hover:text-text'
 
-                // Skills with a reference guide become interactive buttons.
-                if (guide) {
+                // Skills with a reference guide are same-tab links to its page.
+                if (hasGuide(name)) {
                   return (
-                    <motion.button
+                    <motion.a
                       key={name}
-                      type="button"
-                      onClick={() => setActiveGuide(guide)}
+                      href={`${referenceBase}?skill=${slugify(name)}`}
                       whileHover={{ y: -3, scale: 1.04 }}
                       whileTap={{ scale: 0.97 }}
                       transition={{ type: 'spring', stiffness: 400, damping: 18 }}
-                      aria-label={`View ${name} command reference`}
-                      className={`${commonClasses} cursor-pointer hover:border-primary/50`}
+                      aria-label={`Open ${name} command reference`}
+                      className={`${commonClasses} group/badge cursor-pointer hover:border-primary/50`}
                     >
                       <Icon
                         className="text-base"
                         style={{ color: category.accent }}
                       />
                       {name}
-                      <HiOutlineBookOpen className="text-sm text-muted" />
-                    </motion.button>
+                      <HiOutlineArrowRight className="text-sm text-muted transition-transform group-hover/badge:translate-x-0.5" />
+                    </motion.a>
                   )
                 }
 
@@ -100,11 +96,6 @@ export default function Skills() {
           </motion.div>
         ))}
       </motion.div>
-
-      <SkillGuideModal
-        guide={activeGuide}
-        onClose={() => setActiveGuide(null)}
-      />
     </Section>
   )
 }

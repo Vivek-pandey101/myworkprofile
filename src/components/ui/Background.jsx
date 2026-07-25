@@ -1,6 +1,9 @@
 /**
- * Ambient page background: base gradient, subtle grid, and animated
- * color blobs. Purely decorative — hidden from assistive tech.
+ * Ambient page background: base gradient, subtle grid, and two lightweight
+ * animated color blobs. Purely decorative — hidden from assistive tech.
+ *
+ * Perf notes: blobs animate translate only (compositor-friendly) and use a
+ * moderate blur. A static third accent adds depth without a third animation.
  */
 export default function Background() {
   return (
@@ -12,18 +15,17 @@ export default function Background() {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-[#0b1120]" />
 
       {/* Grid overlay, faded toward the bottom */}
-      <div className="absolute inset-0 bg-grid mask-fade-b opacity-70" />
+      <div className="absolute inset-0 bg-grid mask-fade-b opacity-60" />
 
-      {/* Animated blobs */}
-      <div className="absolute -left-32 top-[-6rem] h-[32rem] w-[32rem] rounded-full bg-primary/20 blur-[120px] animate-blob" />
+      {/* Animated blobs (translate-only) */}
+      <div className="absolute -left-32 top-[-6rem] h-[26rem] w-[26rem] rounded-full bg-primary/20 blur-[90px] animate-blob" />
       <div
-        className="absolute right-[-8rem] top-[20%] h-[28rem] w-[28rem] rounded-full bg-secondary/15 blur-[120px] animate-blob"
-        style={{ animationDelay: '-6s' }}
+        className="absolute right-[-8rem] top-[25%] h-[24rem] w-[24rem] rounded-full bg-secondary/15 blur-[90px] animate-blob"
+        style={{ animationDelay: '-8s' }}
       />
-      <div
-        className="absolute bottom-[-8rem] left-[30%] h-[30rem] w-[30rem] rounded-full bg-violet-500/10 blur-[130px] animate-blob"
-        style={{ animationDelay: '-12s' }}
-      />
+
+      {/* Static accent for depth (no animation) */}
+      <div className="absolute bottom-[-8rem] left-[35%] h-[22rem] w-[22rem] rounded-full bg-violet-500/10 blur-[100px]" />
 
       {/* Top glow */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
