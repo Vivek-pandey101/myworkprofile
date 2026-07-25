@@ -204,10 +204,8 @@ export const projects = [
     contribution:
       'Designed and developed the CRM platform, implemented lead workflows, analytics systems, user roles and permissions, backend APIs, and cloud deployment infrastructure.',
     gradient: ['#2563eb', '#14b8a6'],
-    // Public URLs — add when available. Omitted links render no button.
     live: null,
-    website: null,
-    note: 'Private client project',
+    website: 'https://acreloop.com/',
   },
   {
     name: 'Gyankosha',
@@ -227,8 +225,7 @@ export const projects = [
       'Worked on platform development, feature enhancements, backend services, frontend interfaces, and overall platform maintenance.',
     gradient: ['#8b5cf6', '#2563eb'],
     live: null,
-    website: null,
-    note: 'Live production platform',
+    website: 'https://gyankosha.com/',
   },
   {
     name: 'AEP Gyankosha',
@@ -248,8 +245,7 @@ export const projects = [
       'Developed and maintained platform features, APIs, authentication systems, and payment-related workflows.',
     gradient: ['#14b8a6', '#2563eb'],
     live: null,
-    website: null,
-    note: 'Live production platform',
+    website: 'https://aepgyankosha.com/',
   },
   {
     name: 'Business Wisdom Gyankosha',
@@ -269,8 +265,7 @@ export const projects = [
       'Built platform features, backend services, payment integration, and user-facing interfaces.',
     gradient: ['#f59e0b', '#ef4444'],
     live: null,
-    website: null,
-    note: 'Live production platform',
+    website: 'https://businesswisdomgyankosha.com/',
   },
 ]
 

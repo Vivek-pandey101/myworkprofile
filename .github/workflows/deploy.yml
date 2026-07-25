@@ -27,6 +27,12 @@ jobs:
 
       - run: npm install
       - run: npm run build
+        env:
+          # EmailJS keys are client-side (public) by design; injected at build
+          # time from repo secrets so the deployed contact form can send.
+          VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
+          VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
+          VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
 
       - uses: actions/upload-pages-artifact@v3
         with:
