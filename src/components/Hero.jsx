@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { HiArrowDown, HiOutlineEnvelope } from 'react-icons/hi2'
+import { HiArrowDown, HiOutlineEnvelope, HiOutlineDocumentText } from 'react-icons/hi2'
 import { FiGithub, FiLinkedin, FiMail, FiArrowUpRight } from 'react-icons/fi'
 import { SiReact, SiNodedotjs, SiMongodb, SiTailwindcss } from 'react-icons/si'
 import { profile } from '../data/content'
@@ -84,6 +84,15 @@ export default function Hero() {
             <Button href="#contact" variant="secondary">
               <HiOutlineEnvelope size={18} />
               Contact Me
+            </Button>
+            <Button
+              href={profile.resume}
+              variant="ghost"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <HiOutlineDocumentText size={18} />
+              View Resume
             </Button>
           </motion.div>
 

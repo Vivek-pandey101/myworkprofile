@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { HiBars3, HiXMark } from 'react-icons/hi2'
-import { navLinks } from '../data/content'
+import { navLinks, profile } from '../data/content'
 import Button from './ui/Button'
 
 export default function Navbar() {
@@ -61,7 +61,15 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-2 md:flex">
+          <a
+            href={profile.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-lg px-4 py-2 text-sm font-medium text-muted transition-colors hover:text-text"
+          >
+            Resume
+          </a>
           <Button href="#contact" variant="primary" className="px-5 py-2.5">
             Let&apos;s Talk
           </Button>
@@ -101,6 +109,17 @@ export default function Navbar() {
                   </a>
                 </li>
               ))}
+              <li>
+                <a
+                  href={profile.resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="block rounded-xl px-4 py-3 text-base font-medium text-muted transition-colors hover:bg-white/5 hover:text-text"
+                >
+                  Resume
+                </a>
+              </li>
               <li className="mt-2">
                 <Button
                   href="#contact"

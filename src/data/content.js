@@ -36,6 +36,8 @@ export const profile = {
   github: 'https://github.com/Vivek-pandey101',
   linkedin: 'https://www.linkedin.com/in/vivek-kumar-pandey-52924b302/',
   location: 'India',
+  // Lives in /public; BASE_URL keeps the path correct under the Pages subpath.
+  resume: `${import.meta.env.BASE_URL}Vivek_Kumar_Pandey.pdf`,
 }
 
 export const navLinks = [
