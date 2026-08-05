@@ -14,6 +14,10 @@
  *      bestPractices:[{ group, items[] }] }                            *
  * ------------------------------------------------------------------ */
 
+import { walkthroughs } from './skillWalkthroughs'
+import { walkthroughsHi } from './skillWalkthroughs.hi'
+import { overlay } from '../lib/overlay'
+
 const awsEc2 = {
   name: 'AWS EC2',
   tagline: 'Elastic Compute Cloud — resizable virtual servers in the cloud',
@@ -1120,15 +1124,43 @@ const github = {
   ],
 }
 
+/*
+ * Each guide is the command *reference*. skillWalkthroughs.js adds the
+ * beginner layer on top (plain-English intro, diagram, glossary, numbered
+ * walkthrough with the config files spelled out, troubleshooting table).
+ * Merging here means consumers keep reading a single guide object.
+ */
+const withWalkthrough = (guide) => ({
+  ...guide,
+  ...(walkthroughs[guide.name] || {}),
+})
+
 /* Keyed by the exact skill `name` used in content.js so lookups are trivial. */
 export const skillGuides = {
-  'AWS EC2': awsEc2,
-  'AWS SES': awsSes,
-  Nginx: nginx,
-  PM2: pm2,
-  Linux: linux,
-  Git: git,
-  GitHub: github,
+  'AWS EC2': withWalkthrough(awsEc2),
+  'AWS SES': withWalkthrough(awsSes),
+  Nginx: withWalkthrough(nginx),
+  PM2: withWalkthrough(pm2),
+  Linux: withWalkthrough(linux),
+  Git: withWalkthrough(git),
+  GitHub: withWalkthrough(github),
 }
+
+/*
+ * The हिंदी set is the same guides with the translation laid over them, so a
+ * missing translation shows the English sentence instead of a hole. Commands
+ * and file contents are never translated — they are code.
+ */
+const skillGuidesHi = Object.fromEntries(
+  Object.entries(skillGuides).map(([name, guide]) => [
+    name,
+    overlay(guide, walkthroughsHi[name]),
+  ]),
+)
+
+export const guidesByLang = { en: skillGuides, hi: skillGuidesHi }
+
+/** Every guide for one language, in tab order. */
+export const getGuides = (lang) => guidesByLang[lang] || skillGuides
 
 export default skillGuides

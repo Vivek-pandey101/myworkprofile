@@ -17,7 +17,9 @@
   --color-border-strong: rgba(148, 163, 184, 0.22);
 
   /* Typography */
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  /* Noto Sans Devanagari carries the हिंदी text on the guide pages; Inter has
+     no Devanagari glyphs, so without it Windows falls back to Nirmala UI. */
+  --font-sans: 'Inter', 'Noto Sans Devanagari', ui-sans-serif, system-ui, sans-serif;
   --font-display: 'Sora', 'Inter', ui-sans-serif, system-ui, sans-serif;
 
   /* Motion */
